@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HW8 Personal Homepage</title>
     <style>
         .container{
             padding: 30px;
             max-width: 1200px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 100px;
+            border: 5px solid;
+        }
+        .logo {
+          font-size: 50px;
+        }
+        .nav-links {
+          display: flex;      
+          list-style: none;   
+          gap: 20px;        
+          flex-wrap: wrap;
+        }
+        .nav-links a {
+          color: black;
+          text-decoration: none; 
+          font-size: 20px;
+        }
+        .nav-links a:hover {
+          color: darkslateblue; 
         }
         img {
             width: 200px; 
@@ -19,8 +45,19 @@
 </head>
 <body>
     <div class="container">
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="#">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับเรา</a></li>
+            <li><a href="#">คลังผลงาน</a></li>
+            <li><a href="#">ประวัติการทำงาน</a></li>
+            <li><a href="">บทความหรือมุมมอง</a></li>
+            <li><a href="">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
         <img src="https://lh3.googleusercontent.com/a/ACg8ocKkXPJ1ECFhUzZHmmmY8fvS1gsI0ovuaZl3XqLboW3tOcRdUQ=s432-c-no" alt="รูปนักศึกษา"> 
-        <h1>Hi, my name is Suvijak Phaisanpanumas</h1>
+        <h1>👋Hi, my name is Suvijak Phaisanpanumas</h1>
         <h2>Fun facts about me:</h2>
         <ul>
             <li>21 years old</li>
