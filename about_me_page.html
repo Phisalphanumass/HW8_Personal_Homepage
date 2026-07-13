@@ -1,49 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About me</title>
+    <title>เกี่ยวกับเรา - Suwijak</title>
     <style>
-        .container{
-            padding: 30px;
-            max-width: 1200px;
+        /* รักษามาตรฐานฟอนต์และสีพื้นหลังเหมือนหน้าแรก */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
         }
+
+        .container {
+            padding: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ แต่ย้ายคลาส active มาที่ "เกี่ยวกับเรา" */
         .navbar {
             display: flex;
             justify-content: space-between; 
             align-items: center;            
             padding: 15px 30px;
             background-color: silver;
-            margin-bottom: 100px;
-            border: 5px solid;
+            margin-bottom: 60px;
+            border: 5px solid black;
         }
+
         .logo {
-          font-size: 50px;
+            font-size: 32px;
+            font-weight: bold;
         }
+
         .nav-links {
-          display: flex;      
-          list-style: none;   
-          gap: 20px;        
-          flex-wrap: wrap;
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
         }
+
         .nav-links a {
-          color: black;
-          text-decoration: none; 
-          font-size: 20px;
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
         }
+
         .nav-links a:hover {
-          color: darkslateblue; 
+            background-color: black;
+            color: white; 
+        }
+
+        /* ✨ กฎ "You Are Here": ตอนนี้ไฮไลต์ที่คำว่า "เกี่ยวกับเรา" เพื่อบอกว่าผู้ใช้ยืนอยู่หน้านี้ */
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* CONTENT LAYOUT: จัดรูปฝั่งหนึ่ง ข้อความฝั่งหนึ่งด้วย Flexbox */
+        .about-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 5px solid black;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 10px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ededed;
+            border: 2px solid black;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        /* กล่องไฮไลต์ข้อความสไตล์เรโทร */
+        .quote-box {
+            background-color: white;
+            border: 3px solid black;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 4px 4px 0px black;
+        }
+
+        .quote-box h3 {
+            margin: 0 0 10px 0;
+            color: darkslateblue;
+        }
+
+        .quote-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .quote-box li {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* ปุ่มกลับหน้าหลัก/ไปต่อ ชัดเจนตามหลัก Don't Make Me Think */
+        .btn-action {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-action:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 รองรับการเปิดบนมือถือ */
+        @media (max-width: 768px) {
+            .about-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .about-image img {
+                width: 200px;
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- แถบเมนูหลัก (หน้าตาเหมือนเดิม แต่ย้ายไฮไลต์สีน้ำเงินมาที่เกี่ยวกับเรา) -->
         <nav class="navbar">
           <div class="logo">Personal Homepage</div>
           <ul class="nav-links">
             <li><a href="home_page.html">หน้าแรก</a></li>
-            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="about_me_page.html" class="active">เกี่ยวกับเรา</a></li>
             <li><a href="#">คลังผลงาน</a></li>
             <li><a href="#">ทักษะ</a></li>
             <li><a href="#">ประวัติการทำงาน</a></li>
@@ -52,6 +185,35 @@
             <li><a href="#">ติดต่อฉัน</a></li>
           </ul>
         </nav>
+        <div class="about-wrapper">
+            <div class="about-image">
+                <img src="profile.jpg" alt="รูปนักศึกษา">
+            </div>
+            <div class="about-text">
+                <h1>เกี่ยวกับตัวผม</h1>
+                <div class="badge">💻 CPE #CDTI</div>
+                
+                <p>
+                    ยินดีที่ได้รู้จักครับ! ผมชื่อ <strong>สุวิจักขณ์ ไพศาลภาณุมาศ</strong> หรือจะเรียกผมว่า <strong>บีม</strong> ก็ได้ครับ ปัจจุบันผมกำลังลุยศึกหนักอยู่กับการเรียนในสาขา <strong>วิศวกรรมคอมพิวเตอร์ สถาบันเทคโนโลยีจิตรลดา</strong> 
+                </p>
+                
+                <p>
+                    จุดเริ่มต้นที่ทำให้ผมเลือกเดินในเส้นทางสายเดฟและวิศวกรรมคอมฯ เพราะความสนใจในเทคโนโลยี และอยากเข้าใจว่าระบบต่างๆ เบื้องหลังโปรแกรมที่เราใช้งานกันทุกวันมันขับเคลื่อนอย่างไร ถึงแม้ตอนนี้ชีวิตในมหาวิทยาลัยจะเต็มไปด้วยความท้าทาย (และการบ้านที่เยอะมากๆ! 📝) แต่ก็สนุกและได้ฝึกฝนแก้ไขปัญหาอยู่ตลอดเวลาครับ
+                </p>
+                <div class="quote-box">
+                    <h3>💡 นอกเหนือจากการเรียนและเขียนโค้ด</h3>
+                    <ul>
+                        <li>ชอบศึกษาเทคโนโลยีใหม่ๆ และหาไอเดียโปรเจกต์สนุกๆ</li>
+                        <li>ใช้เวลาว่างไปกับการพักผ่อนเพื่อเติมพลังจากการบ้าน</li>
+                        <li>มีความสนใจในเรื่องคอมพิวเตอร์ฮาร์ดแวร์และอุปกรณ์ไอที</li>
+                    </ul>
+                </div>
+                <a href="home_page.html" class="btn-action">🔙 กลับไปหน้าแรก</a>
+                <a href="#" class="btn-action" style="background-color: darkslateblue; border-color: darkslateblue; margin-left: 10px;">ไปดูคลังผลงานต่อ ➔</a>
+            </div>
+
+        </div>
     </div>
+
 </body>
 </html>

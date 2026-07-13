@@ -1,54 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>Home page - Suwijak</title>
     <style>
-        .container{
-            padding: 30px;
-            max-width: 1200px;
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
         }
+
+        .container {
+            padding: 30px;
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between; 
             align-items: center;            
             padding: 15px 30px;
             background-color: silver;
-            margin-bottom: 100px;
-            border: 5px solid;
-        }
-        .logo {
-          font-size: 50px;
-        }
-        .nav-links {
-          display: flex;      
-          list-style: none;   
-          gap: 20px;        
-          flex-wrap: wrap;
-        }
-        .nav-links a {
-          color: black;
-          text-decoration: none; 
-          font-size: 20px;
-        }
-        .nav-links a:hover {
-          color: darkslateblue; 
-        }
-        img {
-            width: 200px; 
-            height: 200px; 
-            object-fit: cover; 
+            margin-bottom: 60px;
             border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        .profile-section {
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .navigation-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation-list li {
+            margin-bottom: 15px;
+        }
+
+        .navigation-list a {
+            display: block; 
+            padding: 15px 20px;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .navigation-list a:hover {
+            background-color: #ededed;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+        
+        .navigation-list a span {
+            color: darkslateblue;
+            font-weight: bold;
+            float: right; 
         }
     </style>
 </head>
 <body>
+
     <div class="container">
+        <!-- แถบเมนูหลัก -->
         <nav class="navbar">
           <div class="logo">Personal Homepage</div>
           <ul class="nav-links">
-            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="home_page.html" class="active">หน้าแรก</a></li>
             <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
             <li><a href="#">คลังผลงาน</a></li>
             <li><a href="#">ทักษะ</a></li>
@@ -58,17 +130,21 @@
             <li><a href="#">ติดต่อฉัน</a></li>
           </ul>
         </nav>
-        <img src="https://lh3.googleusercontent.com/a/ACg8ocKkXPJ1ECFhUzZHmmmY8fvS1gsI0ovuaZl3XqLboW3tOcRdUQ=s432-c-no" alt="รูปนักศึกษา"> 
-        <h1>👋สวัสดี, ผมชื่อสุวิจักขณ์ ไพศาลภาณุมาศ</h1>
-        <ul>
-            <li>ผมชื่อเล่นว่า บีม กำลังศึกษาที่สถาบันเทคโนโลยีจิตรลดา สาขาวิศวกรรมคอมพิวเตอร์ <a href="about_me_page.html" >เกี่ยวกับเรา</a></li>
-            <li>มีการบ้านเยอะที่มาก <a href="#">คลังผลงาน</a></li>
-            <li><a href="#">ทักษะ</a> ของผม</li>
-            <li>ประวัติการฝึกงานของผมทั้งหมดของผม <a href="#">ประวัติการทำงาน</a></li>
-            <li>เครื่องมือต่างๆ ที่ใช้ในการเรียน <a href="#">เครื่องมือ</a></li>
-            <li>สิ่งที่ผมสนใจหรือมุมมองต่างๆ ที่ผมคิดหรือบทความที่สนใจตอนนี้ <a href="#">บทความหรือมุมมอง</a></li>
-            <li>สามารถติดต่อพูดคุยกันได้ <a href="#">ติดต่อฉัน</a></li>
+
+        <div class="profile-section">
+            <h1>👋 สวัสดีครับ ผมชื่อสุวิจักขณ์ ไพศาลภาณุมาศ (บีม)</h1>
+            <p class="subtitle">นักศึกษาสาขาวิศวกรรมคอมพิวเตอร์ สถาบันเทคโนโลยีจิตรลดา</p>
+        </div>
+        <ul class="navigation-list">
+            <li><a href="about_me_page.html">🙋‍♂️ ทำความรู้จักกับผมและชีวิตในรั้วสถาบันพิ่มเติม <span>ดูหน้าเกี่ยวกับเรา ➔</span></a></li>
+            <li><a href="#">📚 รวมการบ้าน โปรเจกต์ และชิ้นงานวิศวกรรมคอมพิวเตอร์ <span>ดูคลังผลงาน ➔</span></a></li>
+            <li><a href="#">🛠️ ทักษะความเชี่ยวชาญและภาษาโปรแกรมมิ่งที่ผมถนัด <span>ดูหน้าทักษะ ➔</span></a></li>
+            <li><a href="#">💼 ประวัติการฝึกงานและประสบการณ์ทำงานทั้งหมดของผม <span>ดูประวัติการทำงาน ➔</span></a></li>
+            <li><a href="#">💻 เปิดกรุเครื่องมือ อุปกรณ์จัดโต๊ะคอม และซอฟต์แวร์ที่ใช้เรียน <span>ดูหน้าเครื่องมือ ➔</span></a></li>
+            <li><a href="#">✍️ บทความ สิ่งที่สนใจ หรือมุมมองความคิดของผมในตอนนี้ <span>ดูบทความหรือมุมมอง ➔</span></a></li>
+            <li><a href="#">✉️ ช่องทางการติดต่อ พูดคุย แลกเปลี่ยน หรือติดต่องาน <span>ดูหน้าติดต่อฉัน ➔</span></a></li>
         </ul>
     </div>
+
 </body>
 </html>
