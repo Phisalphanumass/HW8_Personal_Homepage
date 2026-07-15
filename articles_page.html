@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บทความและมุมมอง - Suwijak</title>
+    <style>
+        /* โครงสร้างพื้นฐานคุมโทนดั้งเดิม */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ ย้ายคลาส active มาที่ "บทความหรือมุมมอง" */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 50px;
+            border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* HEADERS */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* 📰 ARTICLES GRID */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* การ์ดบทความสไตล์เรโทรขอบหนา */
+        .article-card {
+            background-color: white;
+            border: 4px solid black;
+            padding: 25px;
+            box-shadow: 6px 6px 0px black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .article-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+            background-color: #fcfcfc;
+        }
+
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .article-tag {
+            background-color: #ededed;
+            border: 2px solid black;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .article-date {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .article-card h2 {
+            font-size: 22px;
+            margin: 0 0 12px 0;
+            color: darkslateblue;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .quote-box {
+            background-color: #fafafa;
+            border-left: 4px solid darkslateblue;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* ปุ่มอ่านบทความ */
+        .btn-read {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: silver;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            border: 2px solid black;
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+
+        .article-card:hover .btn-read {
+            background-color: black;
+            color: white;
+        }
+
+        /* BUTTON FOOTER */
+        .footer-actions {
+            border-top: 3px dashed black;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 600px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- แถบเมนูหลัก (ไฮไลต์สีน้ำเงินอยู่ที่ บทความหรือมุมมอง) -->
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="homework_page.html">ผลงานการบ้าน</a></li>
+            <li><a href="skills_page.html">ทักษะ</a></li>
+            <li><a href="experience_page.html">ประวัติการทำงาน</a></li>
+            <li><a href="tools_page.html">เครื่องมือที่ใช้</a></li>
+            <li><a href="articles_page.html" class="active">บทความหรือมุมมอง</a></li>
+            <li><a href="#">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
+
+        <!-- หัวข้อหน้าบทความ -->
+        <h1>📰 บทความและมุมมอง (Articles & Perspectives)</h1>
+        <p class="subtitle">ถอดรหัสความคิดและแรงบันดาลใจจากผู้สร้างเทคโนโลยีเปลี่ยนโลก</p>
+
+        <!-- GRID รวมการ์ดบทความ 3 เรื่องเด่น -->
+        <div class="articles-grid">
+            
+            <!-- บทความที่ 1: Dennis Ritchie (C Language) -->
+            <div class="article-card">
+                <div>
+                    <div class="article-header">
+                        <div class="article-tag">💡 The Father of C</div>
+                        <div class="article-date">Dennis Ritchie</div>
+                    </div>
+                    <h2>Dennis Ritchie: บิดาผู้สร้างภาษา C และรากฐานระบบปฏิบัติการ Unix</h2>
+                    <p>หากไม่มีภาษา C และ Unix โลกของซอฟต์แวร์และฮาร์ดแวร์ในปัจจุบันก็คงไม่เกิดขึ้น ภาษา C คือตัวเชื่อมสำคัญที่ทำให้โปรแกรมเมอร์คุยกับฮาร์ดแวร์ได้อย่างมีประสิทธิภาพและเข้าถึงหน่วยความจำได้โดยตรง เป็นรากฐานของภาษาโปรแกรมยุคใหม่เกือบทั้งหมด</p>
+                    <div class="quote-box">
+                        "C is quirky, flawed, and an enormous success." <br>— Dennis Ritchie
+                    </div>
+                </div>
+                <a href="https://en.wikipedia.org/wiki/Dennis_Ritchie" target="_blank" class="btn-read">อ่านประวัติเพิ่มเติม ➔</a>
+            </div>
+
+            <!-- บทความที่ 2: Linus Torvalds (Linux OS) -->
+            <div class="article-card" style="border-color: darkslateblue; box-shadow: 6px 6px 0px darkslateblue;">
+                <div>
+                    <div class="article-header">
+                        <div class="article-tag" style="background-color: darkslateblue; color: white;">🐧 Open Source Legend</div>
+                        <div class="article-date">Linus Torvalds</div>
+                    </div>
+                    <h2 style="color: darkslateblue;">Linus Torvalds: จอมขบถผู้สร้าง Linux และระบบควบคุม Git</h2>
+                    <p>ชายผู้เขียนแกนกลางของระบบปฏิบัติการ (Kernel) ขึ้นมาในหอพักนักศึกษา และแจกจ่ายมันให้คนทั่วโลกใช้ฟรี จน Linux กลายเป็นระบบขับเคลื่อนซูเปอร์คอมพิวเตอร์และเซิร์ฟเวอร์ส่วนใหญ่บนโลกนี้ รวมถึง Git ที่เหล่านักพัฒนาซอฟต์แวร์ใช้จัดการเวอร์ชันโค้ดในปัจจุบัน</p>
+                    <div class="quote-box" style="border-left-color: black;">
+                        "Talk is cheap. Show me the code." <br>— Linus Torvalds
+                    </div>
+                </div>
+                <a href="https://en.wikipedia.org/wiki/Linus_Torvalds" target="_blank" class="btn-read" style="background-color: darkslateblue; color: white;">อ่านประวัติเพิ่มเติม ➔</a>
+            </div>
+
+            <!-- บทความที่ 3: Guido van Rossum (Python) -->
+            <div class="article-card">
+                <div>
+                    <div class="article-header">
+                        <div class="article-tag">🐍 Readable Code</div>
+                        <div class="article-date">Guido van Rossum</div>
+                    </div>
+                    <h2>Guido van Rossum: ผู้สร้าง Python ภาษาแห่งความเรียบง่ายและทรงพลัง</h2>
+                    <p>ชายผู้สร้างภาษาโปรแกรมมิ่งที่เน้นความเรียบง่าย สวยงาม และอ่านง่ายเหมือนภาษาอังกฤษทั่วไป Python ถูกออกแบบมาเพื่อลดความยุ่งยากของไวยากรณ์ ทำให้โปรแกรมเมอร์หันไปโฟกัสที่ตัวตรรกะของปัญหาจริงๆ จนกลายเป็นภาษายอดนิยมในวงการ Data และ AI</p>
+                    <div class="quote-box">
+                        "If you can't read your code, you can't maintain it." <br>— Guido van Rossum
+                    </div>
+                </div>
+                <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum" target="_blank" class="btn-read">อ่านประวัติเพิ่มเติม ➔</a>
+            </div>
+
+        </div>
+
+        <!-- ส่วนท้ายปุ่มควบคุมการเดินหน้าถอยหลังเว็บ -->
+        <div class="footer-actions">
+            <a href="tools_page.html" class="btn-back">🔙 ย้อนกลับหน้าเครื่องมือที่ใช้</a>
+            <!-- เชื่อมโยงไปหน้าติดต่อฉันในอนาคต -->
+            <a href="#" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปหน้าติดต่อฉันต่อ ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
