@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติการทำงาน - Suwijak</title>
+    <style>
+        /* โครงสร้างพื้นฐานคุมโทนดั้งเดิม */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ ย้ายคลาส active มาที่ "ประวัติการทำงาน" */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 50px;
+            border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* HEADERS */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* ⏳ TIMELINE LAYOUT (เส้นประวัติการทำงานและการศึกษา) */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 10px 0;
+        }
+
+        /* เส้นแนวตั้งตรงกลาง timeline */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: black;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* กล่องเนื้อหาแต่ละช่วง */
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        /* จุดวงกลมบนเส้น Timeline */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: silver;
+            border: 4px solid black;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: background-color 0.2s;
+        }
+
+        /* ฝั่งซ้าย */
+        .left {
+            left: 0;
+        }
+
+        /* ฝั่งขวา */
+        .right {
+            left: 50%;
+        }
+
+        /* ปรับตำแหน่งจุดสำหรับฝั่งขวา */
+        .right::after {
+            left: -10px;
+        }
+
+        /* ตัวการ์ดเนื้อหาใน Timeline สไตล์เรโทร */
+        .content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border: 4px solid black;
+            box-shadow: 6px 6px 0px black;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .content:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* เอฟเฟกต์เปลี่ยนสีจุดเวลากล่องโดน Hover */
+        .timeline-container:hover::after {
+            background-color: darkslateblue;
+        }
+
+        .time-tag {
+            display: inline-block;
+            background-color: darkslateblue;
+            color: white;
+            padding: 3px 10px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: 2px solid black;
+        }
+
+        .content h2 {
+            font-size: 20px;
+            margin: 0 0 5px 0;
+            color: #111;
+        }
+
+        .content h3 {
+            font-size: 15px;
+            margin: 0 0 15px 0;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .content p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+        }
+
+        .content ul {
+            padding-left: 20px;
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .content ul li {
+            margin-bottom: 5px;
+        }
+
+        /* BUTTON FOOTER */
+        .footer-actions {
+            border-top: 3px dashed black;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 Responsive สำหรับมือถือ (ปรับ Timeline ให้เป็นแถวเดี่ยวชิดซ้าย) */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-container::after {
+                left: 21px;
+                right: auto;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- แถบเมนูหลัก (ไฮไลต์สีน้ำเงินอยู่ที่ ประวัติการทำงาน) -->
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="homework_page.html">ผลงานการบ้าน</a></li>
+            <li><a href="skills_page.html">ทักษะ</a></li>
+            <li><a href="experience_page.html" class="active">ประวัติการทำงาน</a></li>
+            <li><a href="#">เครื่องมือที่ใช้</a></li>
+            <li><a href="#">บทความหรือมุมมอง</a></li>
+            <li><a href="#">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
+
+        <!-- หัวข้อหน้าประวัติ -->
+        <h1>💼 ประวัติการศึกษาและการทำงาน (Experience & Education)</h1>
+        <p class="subtitle">เส้นทางการเรียนรู้และประสบการณ์ทำงานจริงจากสายปฏิบัติการสู่สายวิศวกรรม</p>
+
+        <!-- โซนเส้นเวลา (Timeline) -->
+        <div class="timeline">
+
+            <!-- 1. ปัจจุบัน: เรียนปริญญาตรี CPE @CDTI -->
+            <div class="timeline-container left">
+                <div class="content">
+                    <div class="time-tag">ปัจจุบัน</div>
+                    <h2>นักศึกษาปริญญาตรี (วศ.บ. วิศวกรรมคอมพิวเตอร์)</h2>
+                    <h3>สถาบันเทคโนโลยีจิตรลดา (CDTI)</h3>
+                    <p>มุ่งเน้นศึกษาทักษะการวิเคราะห์ระบบ (System Analysis), สถาปัตยกรรมระบบ, ระบบเซิร์ฟเวอร์ฝั่งหลัง (Backend/Infra), และความปลอดภัยทางไซเบอร์</p>
+                </div>
+            </div>
+
+            <!-- 2. ประสบการณ์ทำงาน: ฝึกงานที่ 4M Multimedia -->
+            <div class="timeline-container right">
+                <div class="content" style="border-color: darkslateblue; box-shadow: 6px 6px 0px darkslateblue;">
+                    <div class="time-tag" style="background-color: black;">ฝึกงาน (Internship)</div>
+                    <h2 style="color: darkslateblue;">นักศึกษาฝึกงาน</h2>
+                    <h3>บริษัท 4M Multimedia</h3>
+                    <p>ได้มีโอกาสนำความรู้ด้านคอมพิวเตอร์และระบบฮาร์ดแวร์ไปประยุกต์ใช้ในสถานที่ทำงานจริง:</p>
+                    <ul>
+                        <li>เรียนรู้และลงมือปฏิบัติงานร่วมกับทีมผู้เชี่ยวชาญในสายงานมัลติมีเดียและเทคโนโลยี</li>
+                        <li>ช่วยเหลือในการแก้ปัญหา ปรับปรุง และซ่อมบำรุงระบบคอมพิวเตอร์และฮาร์ดแวร์ภายในองค์กร</li>
+                        <li>พัฒนาทักษะการทำงานร่วมกับผู้อื่น (Soft Skills) และการแก้ปัญหาเฉพาะหน้าในเวลาจำกัด</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3. อดีต: ปวส. คอมพิวเตอร์ฮาร์ดแวร์ -->
+            <div class="timeline-container left">
+                <div class="content">
+                    <div class="time-tag">ก่อนหน้า</div>
+                    <h2>ระดับประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</h2>
+                    <h3>สาขาวิชาคอมพิวเตอร์ฮาร์ดแวร์</h3>
+                    <p>ศึกษาลึกซึ้งเกี่ยวกับการประกอบ ติดตั้ง ปรับแต่ง ตรวจซ่อมระบบคอมพิวเตอร์ เมนบอร์ด อุปกรณ์ต่อพ่วง รวมไปถึงการวางระบบเครือข่ายคอมพิวเตอร์เบื้องต้น</p>
+                </div>
+            </div>
+
+            <!-- 4. อดีตแรกเริ่ม: ปวช. ช่างอิเล็กทรอนิกส์ -->
+            <div class="timeline-container right">
+                <div class="content">
+                    <div class="time-tag">เริ่มต้น</div>
+                    <h2>ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</h2>
+                    <h3>สาขาวิชาช่างอิเล็กทรอนิกส์</h3>
+                    <p>ปูพื้นฐานสำคัญเกี่ยวกับอุปกรณ์อิเล็กทรอนิกส์ การออกแบบและวิเคราะห์วงจรไฟฟ้า การบัดกรี และกลไกทำงานของระบบไฟฟ้ากำลังต่ำซึ่งเป็นพื้นฐานของคอมพิวเตอร์</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ส่วนท้ายปุ่มควบคุมการเดินหน้าถอยหลังเว็บ -->
+        <div class="footer-actions">
+            <a href="skills_page.html" class="btn-back">🔙 ย้อนกลับหน้าทักษะ</a>
+            <!-- เชื่อมโยงไปหน้าเครื่องมือที่ใช้ในอนาคต -->
+            <a href="#" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปดูเครื่องมือที่ใช้ต่อ ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
