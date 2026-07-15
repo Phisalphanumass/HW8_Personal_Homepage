@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อฉัน - Suwijak</title>
+    <style>
+        /* โครงสร้างพื้นฐานคุมโทนดั้งเดิม */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ ย้ายคลาส active มาที่ "ติดต่อฉัน" */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 50px;
+            border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* HEADERS */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* 📨 CONTACT LAYOUT */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        /* ส่วนข้อมูลติดต่อทางซ้าย */
+        .contact-info {
+            background-color: #ededed;
+            border: 4px solid black;
+            padding: 30px;
+            box-shadow: 6px 6px 0px black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h2 {
+            font-size: 24px;
+            margin-top: 0;
+            color: darkslateblue;
+            border-bottom: 3px solid black;
+            padding-bottom: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .info-list li {
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-icon {
+            font-size: 24px;
+            min-width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ส่วนฟอร์มส่งข้อความทางขวา */
+        .contact-form-box {
+            background-color: white;
+            border: 4px solid black;
+            padding: 30px;
+            box-shadow: 6px 6px 0px black;
+        }
+
+        .contact-form-box h2 {
+            font-size: 24px;
+            margin-top: 0;
+            color: black;
+            margin-bottom: 25px;
+        }
+
+        /* จัดระเบียบ Form Input */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        /* สไตล์ Input และ Textarea แบบขอบหนาเข้าธีม */
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 3px solid black;
+            background-color: #fafafa;
+            box-sizing: border-box;
+            transition: all 0.15s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 3px 3px 0px darkslateblue;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ปุ่มส่งข้อความ */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: darkslateblue;
+            color: white;
+            border: 3px solid black;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px black;
+            transition: all 0.15s;
+        }
+
+        .btn-submit:hover {
+            background-color: white;
+            color: darkslateblue;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* BUTTON FOOTER */
+        .footer-actions {
+            border-top: 3px dashed black;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- แถบเมนูหลัก (ไฮไลต์สีน้ำเงินอยู่ที่ ติดต่อฉัน) -->
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="homework_page.html">ผลงานการบ้าน</a></li>
+            <li><a href="skills_page.html">ทักษะ</a></li>
+            <li><a href="experience_page.html">ประวัติการทำงาน</a></li>
+            <li><a href="tools_page.html">เครื่องมือที่ใช้</a></li>
+            <li><a href="articles_page.html">บทความหรือมุมมอง</a></li>
+            <li><a href="contact_page.html" class="active">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
+
+        <!-- หัวข้อหน้าติดต่อฉัน -->
+        <h1>📨 ติดต่อฉัน (Contact Me)</h1>
+        <p class="subtitle">ส่งข้อความ แนะนำ ติชม หรือร่วมงานกับเราได้ที่นี่ครับ</p>
+
+        <div class="contact-wrapper">
+            
+            <!-- ด้านซ้าย: ข้อมูลติดต่อโดยตรง -->
+            <div class="contact-info">
+                <div>
+                    <h2>ข้อมูลการติดต่อ</h2>                
+                    <ul class="info-list">
+                        <li>
+                            <div class="info-icon">📧</div>
+                            <div>
+                                <strong>อีเมล:</strong><br>
+                                suvijak.phaisan@gmail.com
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info-icon">📞</div>
+                            <div>
+                                <strong>เบอร์โทรศัพท์:</strong><br>
+                                082-081-1697
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info-icon">📍</div>
+                            <div>
+                                <strong>ที่อยู่/สถาบัน:</strong><br>
+                                คณะวิศวกรรมศาสตร์คอมพิวเตอร์ สถาบันเทคโนโลยีจิตรลดา
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <p style="font-size: 12px; color: #666; margin: 0;">
+                    * ฟอร์มส่งข้อมูลด้านข้างเป็นการจำลองการส่งข้อมูล (Client-side Simulation)
+                </p>
+            </div>
+
+            <!-- ด้านขวา: ฟอร์มส่งข้อความตามโจทย์ -->
+            <div class="contact-form-box">
+                <h2>ส่งข้อความหาฉัน</h2>
+                
+                <form action="#" method="POST" onsubmit="alert('ส่งข้อความเรียบร้อยแล้ว! (นี่คือการจำลองการส่งข้อมูล)'); return false;">
+                    
+                    <!-- Input: Name (Text) -->
+                    <div class="form-group">
+                        <label for="name">👤 ชื่อ-นามสกุลของคุณ</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="กรอกชื่อของคุณที่นี่..." required>
+                    </div>
+
+                    <!-- Input: Email (Email) -->
+                    <div class="form-group">
+                        <label for="email">📧 อีเมลสำหรับติดต่อกลับ</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="example@email.com" required>
+                    </div>
+
+                    <!-- Textarea: Message -->
+                    <div class="form-group">
+                        <label for="message">💬 ข้อความของคุณ</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="เขียนรายละเอียดข้อความที่ต้องการส่งหาเราได้ที่นี่เลยครับ..." required></textarea>
+                    </div>
+
+                    <!-- ปุ่ม Submit ขอบหนาเรโทร -->
+                    <button type="submit" class="btn-submit">🚀 ส่งข้อความเลยตอนนี้</button>
+
+                </form>
+            </div>
+
+        </div>
+
+        <!-- ส่วนท้ายปุ่มควบคุมการเดินหน้าถอยหลังเว็บ -->
+        <div class="footer-actions">
+            <a href="articles_page.html" class="btn-back">🔙 ย้อนกลับหน้าบทความหรือมุมมอง</a>
+            <a href="home_page.html" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">กลับสู่หน้าแรก 🏠</a>
+        </div>
+    </div>
+
+</body>
+</html>
