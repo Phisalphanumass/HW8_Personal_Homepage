@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังผลงาน - Suwijak</title>
+    <style>
+        /* โครงสร้างพื้นฐานคุมโทนเดิม */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px; /* ขยายให้กว้างขึ้นเพื่อรองรับกล่องการบ้าน */
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ ย้ายคลาส active มาที่ "คลังผลงาน" */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 50px;
+            border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* PORTFOLIO GRID: จัดเรียงกล่องการบ้านด้วย Grid System */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* จัดกล่องอัตโนมัติตามขนาดจอ */
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* กล่องการบ้านสไตล์เรโทรขอบหนา */
+        .portfolio-card {
+            background-color: white;
+            border: 4px solid black;
+            padding: 20px;
+            box-shadow: 5px 5px 0px black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.15s ease-in-out;
+        }
+
+        /* ลูกเล่นขยับตอน Hover ชวนให้กดดูการบ้าน */
+        .portfolio-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+            background-color: #fcfcfc;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: #ededed;
+            border: 2px solid black;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .portfolio-card h3 {
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            color: #111;
+        }
+
+        .portfolio-card p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin: 0 0 20px 0;
+        }
+
+        /* ปุ่มกดดูไฟล์การบ้าน (.md) */
+        .btn-view {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: silver;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid black;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .portfolio-card:hover .btn-view {
+            background-color: darkslateblue;
+            color: white;
+        }
+
+        /* BUTTON FOOTER */
+        .footer-actions {
+            border-top: 3px dashed black;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 รองรับหน้าจอมือถือ */
+        @media (max-width: 600px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* บนมือถือให้เรียงเดี่ยวลงมา */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- แถบเมนูหลัก (ไฮไลต์สีน้ำเงินอยู่ที่ คลังผลงาน) -->
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="homework_page.html" class="active">ผลงานการบ้าน</a></li>
+            <li><a href="#">ทักษะ</a></li>
+            <li><a href="#">ประวัติการทำงาน</a></li>
+            <li><a href="#">เครื่องมือที่ใช้</a></li>
+            <li><a href="#">บทความหรือมุมมอง</a></li>
+            <li><a href="#">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
+
+        <!-- หัวข้อหน้าพอร์ต -->
+        <h1>📚 คลังผลงานและการบ้าน</h1>
+        <p class="subtitle">บันทึกโปรเจกต์และภารกิจในวิชาเรียนระบบฝั่งหลัง (CPE @CDTI)</p>
+
+        <!-- GRID รวมกล่องการบ้านทั้ง 8 ชิ้น -->
+        <div class="portfolio-grid">
+            
+            <!-- HW1 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW1 - C# Programming</div>
+                    <h3>CSharp Certificate</h3>
+                    <p>ศึกษาและทดสอบความรู้พื้นฐานภาษา C# เพื่อรับใบประกาศนียบัตรรับรองทักษะ</p>
+                </div>
+                <a href="#" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW2 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW2 - GUI Application</div>
+                    <h3>Windows Form</h3>
+                    <p>การพัฒนาโปรแกรมและออกแบบหน้าต่างโปรแกรมประยุกต์ด้วย Windows Form บน C#</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgArhxCtUgF0Tr5ocRdPzgJmAbMxvuy4MewBlw5ML1zLCYg?e=LE9cVx" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW3 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW3 - Software Eng.</div>
+                    <h3>SDLC & SRS Document</h3>
+                    <p>วิเคราะห์วงจรชีวิตการพัฒนาซอฟต์แวร์ และจัดทำเอกสารข้อกำหนดความต้องการระบบ</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgARsi4yxi3lQ7mEf8oO-Ur-AUjdmvk2BIIA_LE7-c65HVs?e=VrHMZs" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW4 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW4 - Cybersecurity</div>
+                    <h3>MalwareBazaar Analysis</h3>
+                    <p>ศึกษา ตรวจสอบ และวิเคราะห์พฤติกรรมของมัลแวร์และภัยคุกคามทางไซเบอร์</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgApoWcLH4SRRpeZFj3CpIw6AZEd9rWTnyeSYwWtLbCg9CY?e=HMj0nG" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW5 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW5 - System Analysis</div>
+                    <h3>User Requirement</h3>
+                    <p>การรวบรวมข้อมูล สรุปความต้องการของผู้ใช้งาน เพื่อนำมาออกแบบสถาปัตยกรรมระบบ</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgDUR4AuLV7LQaJeoAG0C5u8AbYyAtBvA8Gvpep2vqRAt0o?e=8PBbzH" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW6 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW6 - System Design</div>
+                    <h3>UML Diagram</h3>
+                    <p>ออกแบบโครงสร้าง ความสัมพันธ์ และลำดับขั้นตอนการทำงานของระบบด้วยแผนภาพ UML</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgA-zGJQ6naxRYzPIkmFYw3UAZHJGrfhUMvF3M7kdg8P50M?e=HhPSTd" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW7 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW7 - Server Admin</div>
+                    <h3>IIS Web Server Setup</h3>
+                    <p>การติดตั้งและตั้งค่าระบบ Internet Information Services เพื่อเปิดใช้งานเว็บเซิร์ฟเวอร์</p>
+                </div>
+                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgBx1iVBOqSzToVbjb6ZfwLdAarj313fpdVXeYC04ji4Fg0?e=eUYlrB" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+            <!-- HW8 -->
+            <div class="portfolio-card">
+                <div>
+                    <div class="card-tag">HW8 - Web Dev</div>
+                    <h3>HTML & CSS Portfolio</h3>
+                    <p>โปรเจกต์ดีไซน์และพัฒนาเว็บไซต์หน้าพอร์ตโฟลิโอส่วนตัวแบบตอบสนอง (หน้าเว็บนี้)</p>
+                </div>
+                <a href="#" class="btn-view">เปิดดูงาน ➔</a>
+            </div>
+
+        </div>
+
+        <div class="footer-actions">
+            <a href="home_page.html" class="btn-back">🔙 กลับไปหน้าแรก</a>
+            <a href="#" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปดูทักษะต่อ ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
