@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เครื่องมือที่ใช้ - Suwijak</title>
+    <style>
+        /* โครงสร้างพื้นฐานคุมโทนดั้งเดิม */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #111;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* NAVBAR: หน้าตาเหมือนเดิมเป๊ะ ย้ายคลาส active มาที่ "เครื่องมือที่ใช้" */
+        .navbar {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;            
+            padding: 15px 30px;
+            background-color: silver;
+            margin-bottom: 50px;
+            border: 5px solid black;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;      
+            list-style: none;   
+            gap: 20px;        
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none; 
+            font-size: 18px;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white; 
+        }
+
+        .nav-links a.active {
+            background-color: darkslateblue;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* HEADERS */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        /* 🛠️ TOOLS SECTION LAYOUT */
+        .tools-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 3px solid black;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* การ์ดแสดงเครื่องมือแต่ละชิ้น */
+        .tool-card {
+            background-color: white;
+            border: 3px solid black;
+            padding: 15px 20px;
+            box-shadow: 4px 4px 0px black;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .tool-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+            background-color: #fcfcfc;
+        }
+
+        /* วงกลมไอคอน/อิโมจิหน้ารายชื่อเครื่องมือ */
+        .tool-icon {
+            font-size: 28px;
+            min-width: 45px;
+            height: 45px;
+            background-color: #ededed;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-info h3 {
+            font-size: 16px;
+            margin: 0;
+            color: #111;
+        }
+
+        .tool-info p {
+            font-size: 12px;
+            margin: 3px 0 0 0;
+            color: #666;
+        }
+
+        /* BUTTON FOOTER */
+        .footer-actions {
+            border-top: 3px dashed black;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid black;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            transition: all 0.15s;
+        }
+
+        .btn-back:hover {
+            background-color: white;
+            color: black;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px black;
+        }
+
+        /* 📱 Responsive */
+        @media (max-width: 600px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- แถบเมนูหลัก (ไฮไลต์สีน้ำเงินอยู่ที่ เครื่องมือที่ใช้) -->
+        <nav class="navbar">
+          <div class="logo">Personal Homepage</div>
+          <ul class="nav-links">
+            <li><a href="home_page.html">หน้าแรก</a></li>
+            <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
+            <li><a href="homework_page.html">ผลงานการบ้าน</a></li>
+            <li><a href="skills_page.html">ทักษะ</a></li>
+            <li><a href="experience_page.html">ประวัติการทำงาน</a></li>
+            <li><a href="tools_page.html" class="active">เครื่องมือที่ใช้</a></li>
+            <li><a href="#">บทความหรือมุมมอง</a></li>
+            <li><a href="#">ติดต่อฉัน</a></li>
+          </ul>
+        </nav>
+
+        <!-- หัวข้อหน้าเครื่องมือ -->
+        <h1>🛠️ เครื่องมือและเทคโนโลยีที่ใช้ (Tools & Tech Stack)</h1>
+        <p class="subtitle">ระบบและโปรแกรมประยุกต์ต่าง ๆ ที่เลือกใช้ในการทดสอบ ออกแบบ และพัฒนาโครงงาน</p>
+
+        <!-- กลุ่มที่ 1: การพัฒนาซอฟต์แวร์และการเขียนโค้ด -->
+        <div class="tools-section">
+            <div class="section-title" style="color: darkslateblue;">💻 Software Development & IDEs</div>
+            <div class="tools-grid">
+                
+                <div class="tool-card">
+                    <div class="tool-icon">🖥️</div>
+                    <div class="tool-info">
+                        <h3>Visual Studio</h3>
+                        <p>พัฒนา C# / WinForm</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <div class="tool-info">
+                        <h3>VS Code</h3>
+                        <p>เขียนโค้ดและทำเว็บ</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🐙</div>
+                    <div class="tool-info">
+                        <h3>Git & GitHub</h3>
+                        <p>ควบคุมเวอร์ชันซอฟต์แวร์</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🗃️</div>
+                    <div class="tool-info">
+                        <h3>SQL Server</h3>
+                        <p>จัดการฐานข้อมูล</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- กลุ่มที่ 2: เครื่องมือจำลองและจัดการเซิร์ฟเวอร์/ระบบเครือข่าย -->
+        <div class="tools-section">
+            <div class="section-title">☁️ Infrastructure & Server Admin</div>
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div class="tool-icon">⚙️</div>
+                    <div class="tool-info">
+                        <h3>IIS (Web Server)</h3>
+                        <p>เปิดใช้เซิร์ฟเวอร์บน Windows</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📦</div>
+                    <div class="tool-info">
+                        <h3>VMware / VirtualBox</h3>
+                        <p>สร้างแล็บและรันระบบเสมือน</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <div class="tool-info">
+                        <h3>Cisco Packet Tracer</h3>
+                        <p>จำลองและทดสอบเครือข่าย</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <div class="tool-info">
+                        <h3>Wireshark</h3>
+                        <p>วิเคราะห์ข้อมูลและแพ็กเก็ต</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- กลุ่มที่ 3: ฮาร์ดแวร์ การออกแบบ และมัลติมีเดีย -->
+        <div class="tools-section">
+            <div class="section-title" style="color: #444;">🔌 Hardware & Design Tools</div>
+            <div class="tools-grid">
+
+                <div class="tool-card">
+                    <div class="tool-icon">📟</div>
+                    <div class="tool-info">
+                        <h3>Arduino IDE</h3>
+                        <p>อัปโหลดโค้ดไมโครคอนโทรลเลอร์</p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <div class="tool-info">
+                        <h3>draw.io / Lucidchart</h3>
+                        <p>เขียนแผนภาพ UML และ Flowchart</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ส่วนท้ายปุ่มควบคุมการเดินหน้าถอยหลังเว็บ -->
+        <div class="footer-actions">
+            <a href="experience_page.html" class="btn-back">🔙 ย้อนกลับหน้าประวัติการทำงาน</a>
+            <a href="#" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปต่อหน้าบทบาทหรือมุมมอง ➔</a>
+        </div>
+    </div>
+
+</body>
+</html>
