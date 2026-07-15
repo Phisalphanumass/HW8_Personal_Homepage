@@ -79,7 +79,7 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* จัดกล่องอัตโนมัติตามขนาดจอ */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* ปรับขนาดขั้นต่ำให้พอดีกับปุ่มคู่ */
             gap: 25px;
             margin-bottom: 50px;
         }
@@ -127,21 +127,44 @@
             margin: 0 0 20px 0;
         }
 
-        /* ปุ่มกดดูไฟล์การบ้าน (.md) */
-        .btn-view {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background-color: silver;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border: 2px solid black;
-            font-size: 15px;
-            transition: all 0.2s;
+        /* 🕹️ ส่วนจัดการจัดวางปุ่มคู่ (View & Download) */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* แบ่งครึ่งกล่องเท่าๆ กัน */
+            gap: 10px;
+            margin-top: auto; /* ดันกลุ่มปุ่มลงไปอยู่ด้านล่างสุดของการ์ดเสมอ */
         }
 
-        .portfolio-card:hover .btn-view {
+        /* สไตล์ปุ่มกดส่วนกลาง */
+        .btn-card {
+            display: block;
+            text-align: center;
+            padding: 8px 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid black;
+            transition: all 0.15s ease-in-out;
+        }
+
+        /* ปุ่ม View (สีขาว-ตัวอักษรดำ) */
+        .btn-view {
+            background-color: white;
+            color: black;
+        }
+
+        .btn-view:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* ปุ่ม Download (สีเงิน-ตัวอักษรดำ) */
+        .btn-download {
+            background-color: silver;
+            color: black;
+        }
+
+        .btn-download:hover {
             background-color: darkslateblue;
             color: white;
         }
@@ -191,7 +214,7 @@
             <li><a href="home_page.html">หน้าแรก</a></li>
             <li><a href="about_me_page.html">เกี่ยวกับเรา</a></li>
             <li><a href="homework_page.html" class="active">ผลงานการบ้าน</a></li>
-            <li><a href="#">ทักษะ</a></li>
+            <li><a href="skills_page.html">ทักษะ</a></li>
             <li><a href="#">ประวัติการทำงาน</a></li>
             <li><a href="#">เครื่องมือที่ใช้</a></li>
             <li><a href="#">บทความหรือมุมมอง</a></li>
@@ -213,7 +236,10 @@
                     <h3>CSharp Certificate</h3>
                     <p>ศึกษาและทดสอบความรู้พื้นฐานภาษา C# เพื่อรับใบประกาศนียบัตรรับรองทักษะ</p>
                 </div>
-                <a href="#" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="#" class="btn-card btn-view">👁️ View</a>
+                    <a href="#" class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW2 -->
@@ -223,7 +249,10 @@
                     <h3>Windows Form</h3>
                     <p>การพัฒนาโปรแกรมและออกแบบหน้าต่างโปรแกรมประยุกต์ด้วย Windows Form บน C#</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgArhxCtUgF0Tr5ocRdPzgJmAbMxvuy4MewBlw5ML1zLCYg?e=LE9cVx" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgArhxCtUgF0Tr5ocRdPzgJmAbMxvuy4MewBlw5ML1zLCYg?e=LE9cVx" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgArhxCtUgF0Tr5ocRdPzgJmAbMxvuy4MewBlw5ML1zLCYg?e=LE9cVx" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW3 -->
@@ -233,7 +262,10 @@
                     <h3>SDLC & SRS Document</h3>
                     <p>วิเคราะห์วงจรชีวิตการพัฒนาซอฟต์แวร์ และจัดทำเอกสารข้อกำหนดความต้องการระบบ</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgARsi4yxi3lQ7mEf8oO-Ur-AUjdmvk2BIIA_LE7-c65HVs?e=VrHMZs" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgARsi4yxi3lQ7mEf8oO-Ur-AUjdmvk2BIIA_LE7-c65HVs?e=VrHMZs" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgARsi4yxi3lQ7mEf8oO-Ur-AUjdmvk2BIIA_LE7-c65HVs?e=VrHMZs" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW4 -->
@@ -243,7 +275,10 @@
                     <h3>MalwareBazaar Analysis</h3>
                     <p>ศึกษา ตรวจสอบ และวิเคราะห์พฤติกรรมของมัลแวร์และภัยคุกคามทางไซเบอร์</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgApoWcLH4SRRpeZFj3CpIw6AZEd9rWTnyeSYwWtLbCg9CY?e=HMj0nG" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgApoWcLH4SRRpeZFj3CpIw6AZEd9rWTnyeSYwWtLbCg9CY?e=HMj0nG" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgApoWcLH4SRRpeZFj3CpIw6AZEd9rWTnyeSYwWtLbCg9CY?e=HMj0nG" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW5 -->
@@ -253,7 +288,10 @@
                     <h3>User Requirement</h3>
                     <p>การรวบรวมข้อมูล สรุปความต้องการของผู้ใช้งาน เพื่อนำมาออกแบบสถาปัตยกรรมระบบ</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgDUR4AuLV7LQaJeoAG0C5u8AbYyAtBvA8Gvpep2vqRAt0o?e=8PBbzH" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgDUR4AuLV7LQaJeoAG0C5u8AbYyAtBvA8Gvpep2vqRAt0o?e=8PBbzH" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgDUR4AuLV7LQaJeoAG0C5u8AbYyAtBvA8Gvpep2vqRAt0o?e=8PBbzH" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW6 -->
@@ -263,7 +301,10 @@
                     <h3>UML Diagram</h3>
                     <p>ออกแบบโครงสร้าง ความสัมพันธ์ และลำดับขั้นตอนการทำงานของระบบด้วยแผนภาพ UML</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgA-zGJQ6naxRYzPIkmFYw3UAZHJGrfhUMvF3M7kdg8P50M?e=HhPSTd" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgA-zGJQ6naxRYzPIkmFYw3UAZHJGrfhUMvF3M7kdg8P50M?e=HhPSTd" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgA-zGJQ6naxRYzPIkmFYw3UAZHJGrfhUMvF3M7kdg8P50M?e=HhPSTd" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW7 -->
@@ -273,7 +314,10 @@
                     <h3>IIS Web Server Setup</h3>
                     <p>การติดตั้งและตั้งค่าระบบ Internet Information Services เพื่อเปิดใช้งานเว็บเซิร์ฟเวอร์</p>
                 </div>
-                <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgBx1iVBOqSzToVbjb6ZfwLdAarj313fpdVXeYC04ji4Fg0?e=eUYlrB" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgBx1iVBOqSzToVbjb6ZfwLdAarj313fpdVXeYC04ji4Fg0?e=eUYlrB" target="_blank" class="btn-card btn-view">👁️ View</a>
+                    <a href="https://cdti365-my.sharepoint.com/:f:/g/personal/sarayut_cha_ms_cdti_ac_th/IgBx1iVBOqSzToVbjb6ZfwLdAarj313fpdVXeYC04ji4Fg0?e=eUYlrB" download class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
             <!-- HW8 -->
@@ -283,14 +327,17 @@
                     <h3>HTML & CSS Portfolio</h3>
                     <p>โปรเจกต์ดีไซน์และพัฒนาเว็บไซต์หน้าพอร์ตโฟลิโอส่วนตัวแบบตอบสนอง (หน้าเว็บนี้)</p>
                 </div>
-                <a href="#" class="btn-view">เปิดดูงาน ➔</a>
+                <div class="button-group">
+                    <a href="#" class="btn-card btn-view">👁️ View</a>
+                    <a href="#" class="btn-card btn-download">💾 Download</a>
+                </div>
             </div>
 
         </div>
 
         <div class="footer-actions">
             <a href="home_page.html" class="btn-back">🔙 กลับไปหน้าแรก</a>
-            <a href="#" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปดูทักษะต่อ ➔</a>
+            <a href="skills_page.html" class="btn-back" style="background-color: darkslateblue; color: white; margin-left: 10px;">ไปดูทักษะต่อ ➔</a>
         </div>
     </div>
 
